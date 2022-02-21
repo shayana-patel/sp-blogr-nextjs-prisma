@@ -13,10 +13,6 @@ export default authHandler;
 
 const options = {
   providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
     EmailProvider({
       server: {
         host: process.env.EMAIL_SERVER_HOST,
@@ -27,7 +23,11 @@ const options = {
         }
       },
       from: process.env.EMAIL_FROM
-    })
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
   ],
   adapter: PrismaAdapter(prisma),
   secret: process.env.SECRET,
